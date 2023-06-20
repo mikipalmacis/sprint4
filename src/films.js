@@ -13,9 +13,14 @@ function getMoviesFromDirector(movies, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  
+function moviesAverageOfDirector(moviesDirector, director) {
+  const movies = getMoviesFromDirector(moviesDirector, director);
+  const result = movies.reduce((sum, movie) => sum + movie.score, 0);
+  const media = result / movies.length;
+  console.log("EXERCICE 3 ->", media);
+  return result;
 }
+moviesAverageOfDirector(movies, 'Sergio Leone');
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
