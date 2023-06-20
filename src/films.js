@@ -20,12 +20,14 @@ function moviesAverageOfDirector(moviesDirector, director) {
   console.log("EXERCICE 3 ->", media);
   return result;
 }
-moviesAverageOfDirector(movies, 'Sergio Leone');
+//moviesAverageOfDirector(movies, 'Sergio Leone');
 
 // Exercise 4:  Alphabetic order by title 
-function orderAlphabetically(array) {
-  
+function orderAlphabetically(movies) {
+  const result = movies.sort((a, b) => a.title.localeCompare(b.title)).slice(0, 20);
+  console.log("EXERCICE 4 ->", result);
 }
+orderAlphabetically(movies);
 
 // Exercise 5: Order by year, ascending
 function orderByYear() {
