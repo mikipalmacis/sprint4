@@ -12,15 +12,18 @@ function getMoviesFromDirector(movies, director) {
   return result;
 }
 
+function moviesAverage(movies){
+  const result = movies.reduce((sum, movie) => sum + movie.score, 0);
+  return result / movies.length;
+}
+
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(moviesDirector, director) {
   const movies = getMoviesFromDirector(moviesDirector, director);
-  const result = movies.reduce((sum, movie) => sum + movie.score, 0);
-  const media = result / movies.length;
+  const media = moviesAverage(movies);
   console.log("EXERCICE 3 ->", media);
-  return result;
+  return media;
 }
-//moviesAverageOfDirector(movies, 'Sergio Leone');
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies) {
@@ -45,9 +48,14 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(movies, categoria) {
+  const result = movies.filter(movie => movie.genre.includes(categoria));
+  const media = moviesAverage(result);
+  console.log("EXERCICE 6 ->", media.toFixed(2));
+  return media.toFixed(2);
 }
+moviesAverageByCategory(movies, 'Biography');
+
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
