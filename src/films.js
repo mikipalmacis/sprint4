@@ -79,14 +79,25 @@ function hoursToMinutes(movies) {
   console.log("EXERCICE 7 ->", result);
   return result;
 }
-hoursToMinutes(movies);
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(year) {
+  const peliculas = movies.filter(movie => movie.year == year);
+
+  if (peliculas.length !== 0) {
+    const mejorPelicula = peliculas.reduce((prevMovie, currentMovie) => {
+      return currentMovie.score > prevMovie.score ? currentMovie : prevMovie;
+    });
+
+    console.log("EXERCICE 8 ->", mejorPelicula);
+    return mejorPelicula;
+  } else {
+    console.log(`No se encontraron películas para el año ${year}`);
+    return null;
+  }
 }
 
-
+bestFilmOfYear('1976');
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
