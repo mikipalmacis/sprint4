@@ -54,13 +54,32 @@ function moviesAverageByCategory(movies, categoria) {
   console.log("EXERCICE 6 ->", media.toFixed(2));
   return media.toFixed(2);
 }
-moviesAverageByCategory(movies, 'Biography');
 
-
-// Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function horasMinutos(duration) {
+  let totalMinutes = 0;
+  if (duration.includes('h') && duration.includes('min')) {
+    const hours = parseInt(duration.split('h')[0]);
+    const minutes = parseInt(duration.split(' ')[1].split('min')[0]);
+    totalMinutes = hours * 60 + minutes;
+  } else if (duration.includes('h')) {
+    const hours = parseInt(duration.split('h')[0]);
+    totalMinutes = hours * 60;
+  } else if (duration.includes('min')) {
+    const minutes = parseInt(duration.split('min')[0]);
+    totalMinutes = minutes;
+  }
+  return totalMinutes;
 }
+// Exercise 7: Modify the duration of movies to minutes
+function hoursToMinutes(movies) {
+  const result = movies.map(movie => {
+    const minutes = horasMinutos(movie.duration);
+    return { ...movie, duration: minutes };
+  });
+  console.log("EXERCICE 7 ->", result);
+  return result;
+}
+hoursToMinutes(movies);
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {
